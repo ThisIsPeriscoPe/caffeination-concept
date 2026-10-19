@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Caffeination Burleigh | Website concept</title>
+<link rel="icon" href="img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Yellowtail&display=swap">
+<style>
+/* Layout: white coastal page, full-width colour bands with a centred 1200px column; aqua circle from the logo used as the one recurring motif. */
+:root{
+  --navy:#1B395D;
+  --navy-deep:#132A46;
+  --ink:#33475B;
+  --aqua:#91D0D5;
+  --aqua-dark:#2A6F8A;
+  --seafoam:#EEF8F9;
+  --sand:#F5EFE6;
+  --sand-deep:#EAE0D1;
+  --line:#DCEBEE;
+  --white:#FFFFFF;
+  --font-body:'Jost', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-script:'Yellowtail', 'Brush Script MT', cursive;
+  --wrap:1200px;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--navy);font-family:var(--font-body);font-size:17px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:var(--navy)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--aqua-dark);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.08;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+.script{font-family:var(--font-script);color:var(--aqua-dark);font-size:clamp(24px,2.4vw,32px);line-height:1.2}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:999px;font:500 17px var(--font-body);text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-solid{background:var(--navy);color:var(--white)}
+.btn-solid:hover{background:var(--navy-deep)}
+.btn-ghost{background:var(--white);color:var(--navy)}
+.btn-ghost:hover{background:var(--seafoam)}
+
+/* concept ribbon */
+.ribbon{background:var(--navy);color:#D6E6EC;font-size:14px}
+.ribbon .wrap{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;padding-block:8px;text-align:center}
+.ribbon strong{color:var(--white);font-weight:500}
+
+/* header */
+header.site{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px}
+.logo img{height:64px;width:auto}
+nav.main{display:flex;align-items:center;gap:28px;font-weight:500}
+nav.main a{text-decoration:none}
+nav.main a:not(.btn):hover{color:var(--aqua-dark)}
+.menu-toggle{display:none;width:48px;height:48px;border:0;background:transparent;align-items:center;justify-content:center;cursor:pointer}
+@media (max-width: 860px){
+  .menu-toggle{display:inline-flex}
+  nav.main{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-bottom:1px solid var(--line);padding:8px max(20px, env(safe-area-inset-right, 0px)) 20px max(20px, env(safe-area-inset-left, 0px))}
+  nav.main a:not(.btn){padding:14px 0;border-bottom:1px solid var(--line)}
+  nav.main .btn{margin-top:16px}
+  nav.main:not(.open){display:none}
+  .logo img{height:52px}
+}
+
+/* hero */
+.hero{background:var(--seafoam);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding-block:72px 88px}
+.hero-copy{display:flex;flex-direction:column;gap:22px;min-width:0}
+.hero h1{font-size:clamp(38px,5vw,62px);letter-spacing:-.5px}
+.hero .lede{font-size:clamp(17px,1.6vw,20px);color:var(--ink);max-width:34em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.hero-img{position:relative;justify-self:center;width:min(460px,100%)}
+.hero-img::before{content:"";position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:var(--aqua);top:-6%;right:-10%;animation:drift 9s ease-in-out infinite alternate}
+.hero-img img{position:relative;width:100%;aspect-ratio:1;object-fit:cover;border-radius:28px;box-shadow:0 18px 40px rgba(27,57,93,.18)}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-14px,10px)}}
+@media (max-width: 860px){.hero .wrap{grid-template-columns:1fr;padding-block:36px 52px;gap:32px}.hero-img{order:-1}.hero-img::before{right:-4%}}
+
+/* info strip */
+.strip{background:var(--aqua)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 28px;padding-block:22px}
+.strip-item{display:flex;align-items:center;gap:12px;min-width:0}
+.strip-item svg{flex:none}
+.strip-item strong{font-weight:600}
+@media (max-width: 860px){.strip .wrap{grid-template-columns:1fr}}
+
+/* sections */
+section.block{padding-block:clamp(56px,8vw,96px)}
+.section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:36px}
+.section-head .titles{display:flex;flex-direction:column;gap:6px}
+.section-head h2,.split h2{font-size:clamp(32px,3.6vw,46px)}
+
+/* menu tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.tab{min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);font:500 16px var(--font-body);color:var(--navy);cursor:pointer}
+.tab:hover{border-color:var(--aqua)}
+.tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.panel{border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 56px}
+.panel h3{font-family:var(--font-script);font-weight:400;font-size:clamp(32px,3vw,40px);color:var(--aqua-dark);grid-column:1/-1}
+.group{display:flex;flex-direction:column;gap:14px;min-width:0}
+.group-head{display:flex;justify-content:space-between;gap:12px;font-size:20px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.items li{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.items .name{font-weight:500}
+.items .desc{display:block;color:var(--ink);font-size:15px;font-weight:400}
+.items .price{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+.note{font-size:14px;color:var(--aqua-dark);font-weight:500}
+@media (max-width: 760px){.panel{grid-template-columns:1fr}}
+
+/* split sections */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split > *{min-width:0}
+.split .copy{display:flex;flex-direction:column;gap:20px}
+.split .copy p.body{font-size:18px;color:var(--ink);max-width:32em}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ticks li{display:flex;gap:12px;align-items:center}
+@media (max-width: 860px){.split{grid-template-columns:1fr;gap:32px}}
+.office{background:var(--sand)}
+.ph{border-radius:24px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--ink);font-size:15px}
+.ph-sand{background:var(--sand-deep)}
+.ph-sea{background:var(--seafoam)}
+.ph-white{background:var(--white)}
+
+/* order form */
+.order-card{background:var(--white);border-radius:24px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:16px;box-shadow:0 10px 30px rgba(27,57,93,.08)}
+.order-card h3{font-size:24px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:15px;font-weight:500}
+.field input,.field select,.field textarea{font:400 16px var(--font-body);color:var(--navy);min-height:48px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--white)}
+.field textarea{min-height:90px;resize:vertical}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width: 520px){.row2{grid-template-columns:1fr}}
+.form-msg{background:var(--seafoam);border-radius:12px;padding:12px 14px;font-size:15px;color:var(--navy)}
+
+/* about */
+.about-imgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.about-imgs .ph{aspect-ratio:4/5;max-width:100%}
+
+/* instagram */
+.insta{background:var(--seafoam)}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.grid4 > *{aspect-ratio:1;border-radius:18px;max-width:100%}
+.grid4 img{width:100%;height:100%;object-fit:cover}
+@media (max-width: 760px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+/* visit */
+.facts{display:flex;flex-direction:column;gap:20px}
+.fact strong{display:block;font-weight:600}
+.fact span,.fact a{color:var(--ink)}
+.selectable{user-select:all}
+.visit-img{width:100%;height:clamp(260px,36vw,480px);object-fit:cover;border-radius:24px}
+
+/* footer */
+footer.site{background:var(--navy);color:#D6E6EC;font-size:15px}
+footer.site .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-block:40px}
+footer.site a{color:var(--white)}
+.f-brand{display:flex;align-items:center;gap:12px;color:var(--white);font-size:20px}
+.dot{width:40px;height:40px;border-radius:50%;background:var(--aqua);flex:none}
+.f-brand .s{font-family:var(--font-script)}
+footer.site nav{display:flex;gap:24px}
+.ph-tag{font-style:normal;color:var(--aqua-dark);font-weight:500}
+</style>
+</head>
+<body>
+<div class="ribbon"><div class="wrap"><span><strong>Website concept</strong> prepared by PeriscoPe for Caffeination Burleigh</span><span>Text in [brackets] is placeholder content</span></div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Caffeination Burleigh home"><img src="img/logo.webp" alt="Caffeination Burleigh" width="288" height="186"></a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B395D" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="main" id="main-nav" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#office">Platters and office orders</a>
+      <a href="#visit">Visit us</a>
+      <a class="btn btn-solid" href="#order">Order ahead</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="script">Your local on Township Drive</p>
+        <h1>Good coffee and a bit of the coast, just around the corner.</h1>
+        <p class="lede">Coffee, smoothies, burgers, and fresh baking for everyone who lives and works around Burleigh Heads.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#menu">See the menu</a>
+          <a class="btn btn-ghost" href="#visit">Find us</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="img/coffee.webp" alt="A latte with leaf latte art beside a slice and a Caffeination Burleigh loyalty card" width="447" height="447">
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Opening hours, location and phone">
+    <div class="wrap">
+      <div class="strip-item">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B395D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span><strong>Open [days]</strong> 6:30am to 1:30pm</span>
+      </div>
+      <div class="strip-item">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B395D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span><strong>14/76 Township Drive</strong>, Burleigh Heads</span>
+      </div>
+      <div class="strip-item">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B395D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <span><strong class="selectable">(07) 5536 2093</strong> for orders</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="titles">
+          <p class="script">What we're serving</p>
+          <h2>The menu</h2>
+        </div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Menu sections">
+        <button class="tab" role="tab" id="tab-blender" aria-controls="panel-blender" aria-selected="true">From the Blender</button>
+        <button class="tab" role="tab" id="tab-burger" aria-controls="panel-burger" aria-selected="false" tabindex="-1">From the Burger Boy</button>
+        <button class="tab" role="tab" id="tab-baker" aria-controls="panel-baker" aria-selected="false" tabindex="-1">From the Baker</button>
+        <button class="tab" role="tab" id="tab-barista" aria-controls="panel-barista" aria-selected="false" tabindex="-1">From the Barista</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-blender" aria-labelledby="tab-blender">
+        <h3>From the Blender</h3>
+        <div class="group">
+          <div class="group-head"><span>Smoothies</span><span>$12</span></div>
+          <ul class="items">
+            <li><span><span class="name">Energise</span><span class="desc">Pineapple, strawberry, apple, date</span></span></li>
+            <li><span><span class="name">Reboot</span><span class="desc">Pineapple, mango, banana, passionfruit</span></span></li>
+            <li><span><span class="name">Booster</span><span class="desc">Banana, mango, spinach, lime juice</span></span></li>
+            <li><span><span class="name">Detox</span><span class="desc">Banana, blueberry, boysenberry, dates</span></span></li>
+          </ul>
+          <p class="note">Mixed with your choice of milk or coconut water</p>
+        </div>
+        <div class="group">
+          <div class="group-head"><span>Protein smoothies</span><span>$15</span></div>
+          <ul class="items">
+            <li><span><span class="name">Tropifuel</span><span class="desc">Tropical fruit mix, vanilla buttercream protein, coconut water</span></span></li>
+            <li><span><span class="name">Espresso and Go</span><span class="desc">Double coffee shot, caramel, vanilla buttercream protein, choice of milk</span></span></li>
+            <li><span><span class="name">Peanut Power</span><span class="desc">Chocolate peanut protein, banana, almond milk, honey</span></span></li>
+          </ul>
+          <p class="note">Add Macro Mike protein, $3</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-burger" aria-labelledby="tab-burger" hidden>
+        <h3>From the Burger Boy</h3>
+        <div class="group">
+          <div class="group-head"><span>Burgers and breakfast</span></div>
+          <ul class="items">
+            <li><span class="name">Bacon and egg English muffin</span><span class="price">$6.50</span></li>
+            <li><span><span class="name">Burgers</span><span class="desc">Chicken, schnitzel, or beef with lettuce, tomato, and cheese</span></span><span class="price">$16</span></li>
+            <li><span class="name">Tempura chicken nuggets (10)</span><span class="price">$8</span></li>
+          </ul>
+          <p class="note">Add bacon or egg $2, pineapple or beetroot $0.50, chips $4</p>
+        </div>
+        <div class="group">
+          <div class="group-head"><span>Turkish, chips and salads</span></div>
+          <ul class="items">
+            <li><span class="name">BLT on Turkish</span><span class="price">$10</span></li>
+            <li><span class="name">BLAT on Turkish</span><span class="price">$12</span></li>
+            <li><span class="name">Chips</span><span class="price">$6</span></li>
+            <li><span class="name">Salad bowl</span><span class="price">$6 / $10</span></li>
+          </ul>
+          <p class="note">Add ham or chicken to a salad, $3</p>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-baker" aria-labelledby="tab-baker" hidden>
+        <h3>From the Baker</h3>
+        <div class="group">
+          <ul class="items">
+            <li><span class="name">Protein balls</span><span class="price">$3</span></li>
+            <li><span class="name">Carrot cake</span><span class="price">$7.50</span></li>
+            <li><span class="name">Banana bread</span><span class="price">$6</span></li>
+          </ul>
+        </div>
+        <div class="group">
+          <ul class="items">
+            <li><span class="name">[Slice of the day]</span><span class="price">[$]</span></li>
+            <li><span class="name">[Cookies]</span><span class="price">[$]</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-barista" aria-labelledby="tab-barista" hidden>
+        <h3>From the Barista</h3>
+        <div class="group">
+          <ul class="items">
+            <li><span class="name">Flat white, latte, cappuccino</span><span class="price">[$]</span></li>
+            <li><span class="name">Long black, espresso</span><span class="price">[$]</span></li>
+            <li><span class="name">Mocha, hot chocolate, chai</span><span class="price">[$]</span></li>
+          </ul>
+        </div>
+        <div class="group">
+          <ul class="items">
+            <li><span class="name">Iced coffee</span><span class="price">[$]</span></li>
+            <li><span class="name">Beans and ground coffee to take home</span><span class="price">[$]</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block office" id="office">
+    <div class="wrap split">
+      <div class="copy">
+        <p class="script">Neighbours on Township Drive</p>
+        <h2>Feeding the whole office?</h2>
+        <p class="body">Pick-up platters for groups of 10 or more, plus coffee runs ordered ahead so they're ready when you walk in.</p>
+        <ul class="ticks">
+          <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A6F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Pick-up platters, minimum 10 people</li>
+          <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A6F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Coffee orders ready at a set time</li>
+          <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A6F8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>[Notice needed for platters]</li>
+        </ul>
+      </div>
+      <form class="order-card" id="order" novalidate>
+        <h3>Order ahead</h3>
+        <div class="row2">
+          <div class="field"><label for="o-name">Name</label><input id="o-name" name="name" autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="o-business">Business</label><input id="o-business" name="business" autocomplete="organization" placeholder="Unit or company"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="o-type">Order type</label>
+            <select id="o-type" name="type"><option>Coffee run</option><option>Pick-up platter (10+)</option><option>Something else</option></select>
+          </div>
+          <div class="field"><label for="o-time">Pick-up time</label><input id="o-time" name="time" type="time" value="08:30"></div>
+        </div>
+        <div class="field"><label for="o-notes">What would you like?</label><textarea id="o-notes" name="notes" placeholder="e.g. 6 flat whites, 2 oat lattes, 1 chai"></textarea></div>
+        <button class="btn btn-solid" type="submit">Send order</button>
+        <p class="form-msg" id="form-msg" role="status" hidden>This is a concept preview, so nothing was sent. On the live site this would go straight to the cafe, or through their ordering system.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="block" aria-label="About the cafe">
+    <div class="wrap split">
+      <div class="copy">
+        <p class="script">Pull up a chair</p>
+        <h2>Friendly faces, good coffee, and a bit of the coast.</h2>
+        <p class="body">A relaxed spot to grab your morning coffee, catch up with a friend, or take five from the office. <em class="ph-tag">[A line from the owners about the place.]</em></p>
+      </div>
+      <div class="about-imgs">
+        <div class="ph ph-sea">[Photo: inside the cafe]</div>
+        <div class="ph ph-sand">[Photo: the team behind the bar]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block insta" aria-label="Instagram">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Fresh from the bar</h2>
+        <a href="https://www.instagram.com/caffeination_burleigh/" style="font-weight:500">@caffeination_burleigh</a>
+      </div>
+      <div class="grid4">
+        <img src="img/coffee.webp" alt="Latte and slice on the outdoor deck" loading="lazy">
+        <div class="ph ph-white">[Instagram post]</div>
+        <img src="img/store.webp" alt="The Caffeination Burleigh shopfront with its white picket fence" loading="lazy">
+        <div class="ph ph-white">[Instagram post]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="visit">
+    <div class="wrap split">
+      <div class="copy">
+        <p class="script">Come say hi</p>
+        <h2>Visit us</h2>
+        <div class="facts">
+          <div class="fact"><strong>Where</strong><span class="selectable">14/76 Township Drive, Burleigh Heads QLD 4220</span></div>
+          <div class="fact"><strong>When</strong><span>[Days] 6:30am to 1:30pm</span></div>
+          <div class="fact"><strong>Get in touch</strong><span class="selectable">(07) 5536 2093</span><br><span class="selectable">info@caffeination.com.au</span></div>
+        </div>
+        <div><a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&query=76+Township+Drive+Burleigh+Heads+QLD+4220">Get directions</a></div>
+      </div>
+      <img class="visit-img" src="img/store.webp" alt="The Caffeination Burleigh shopfront and outdoor seating" loading="lazy" width="447" height="370">
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-brand"><span class="dot" aria-hidden="true"></span><span>Caffeination <span class="s">Burleigh</span></span></div>
+    <nav aria-label="Social">
+      <a href="https://www.instagram.com/caffeination_burleigh/">Instagram</a>
+      <a href="https://www.facebook.com/p/Caffeination-Burleigh-61571974447505/">Facebook</a>
+    </nav>
+    <span>© 2026 Caffeination Burleigh</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle=document.getElementById('menu-toggle');
+  var nav=document.getElementById('main-nav');
+  toggle.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.closest('a')){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');}
+  });
+
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on=t===tab;
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(n){e.preventDefault();select(n);n.focus();}
+    });
+  });
+
+  document.getElementById('order').addEventListener('submit',function(e){
+    e.preventDefault();
+    document.getElementById('form-msg').hidden=false;
+  });
+})();
+</script>
+</body>
+</html>
